@@ -1,11 +1,15 @@
 import { Context, Next } from "koa"
 import { v4 as uuidv4 } from 'uuid'
 import mysql from '../database/index'
+import { IToken } from "../types/token";
+import { FieldPacket } from "mysql2";
 
 export const register = async (ctx: Context, next: Next) => {
     // 查询是否存在该用户
     const { username, password } = ctx.request.body
-    const [rows, fields] = await mysql.execute('select * from user where username = ?', [username])
+    const [rows, fields]: [Array<IToken>, FieldPacket[]] = await mysql.execute('select * from user where username = ? and password = ?', 
+        [username, password]) as [Array<IToken>, FieldPacket[]];
+
 
     if (password && username && password.length < 6) {
         ctx.status = 400
