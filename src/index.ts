@@ -18,7 +18,7 @@ app.use(cors({
 // jwt 校验，并且排除 登录 和 注册接口
 // 
 app.use(koajwt({ secret: secret }).unless({
-    path: [/^\/api\/login/, /^\/api\/register/]
+    path: [/^\/api\/login/, /^\/api\/register/, /^\/api\/userequipment/]
 }))
 
 

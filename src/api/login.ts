@@ -31,7 +31,8 @@ export const login = async(ctx: Context, next: Next) => {
             code: 0,
             msg: '登录成功',
             data: {
-                token
+                token,
+                userid: rows[0].userid
             }
         }
         await next()
