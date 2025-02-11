@@ -1,6 +1,7 @@
 import { Context, Next } from "koa";
 import mysql from '../database/index'
-import type { equip, table_equip, Instert_equip } from "../types/equipment";
+import type { equip, table_equip } from "../types/equipment";
+import type { Insert_data } from "../types/insertdata";
 import { FieldPacket } from "mysql2";
 
 // 处理用户设备信息
@@ -21,8 +22,6 @@ export const handleUserDevice = async (ctx: Context, next: Next) => {
             }
         }
 
-        console.log('map', map.get('os'))
-
         // 查找是否存在该用户的设备信息
         const [isrows, isfields]: [equip[], FieldPacket[]] = await mysql.execute('select * from user_equipment where userid =?',
             [userid]) as [equip[], FieldPacket[]]
@@ -30,8 +29,6 @@ export const handleUserDevice = async (ctx: Context, next: Next) => {
         // 存在该用户，判断用户是否更新设备信息
 
         const isuserUpdate = async() => {
-            console.log('看看isrows',isrows)
-            console.log(isrows[0])
             
             const current_isrows = isrows[0] as table_equip // 将 isrows 断言为 table_equip 类型
 
@@ -51,7 +48,6 @@ export const handleUserDevice = async (ctx: Context, next: Next) => {
         // 存在该用户，判断用户是否更新设备信息
         if (isrows.length > 0) {
             await isuserUpdate()
-            console.log('用户是否更新设备信息',count)
 
             // 如果为 true，说明用户没有更新设备信息，不需要再次插入数据
             if(count){
@@ -66,8 +62,8 @@ export const handleUserDevice = async (ctx: Context, next: Next) => {
             }
             // 如果为 false，说明用户更新了设备信息，需要更新数据
             if (!count) {
-                const [update_rows, update_fields]: [Instert_equip, FieldPacket[]] = await mysql.execute('UPDATE user_equipment SET os = ?, browser = ?, device_type = ?, browser_language = ? WHERE userid = ?',
-                    [os, browser, device_type, browser_language, userid]) as [Instert_equip, FieldPacket[]]
+                const [update_rows, update_fields]: [Insert_data, FieldPacket[]] = await mysql.execute('UPDATE user_equipment SET os = ?, browser = ?, device_type = ?, browser_language = ? WHERE userid = ?',
+                    [os, browser, device_type, browser_language, userid]) as [Insert_data, FieldPacket[]]
                     
                 if (update_rows.affectedRows) {
                     ctx.status = 200
@@ -85,8 +81,8 @@ export const handleUserDevice = async (ctx: Context, next: Next) => {
 
         // 如果不存在该用户，插入数据
         if (isrows.length === 0) {
-            const [rows, fields]: [Instert_equip, FieldPacket[]] = await mysql.execute('INSERT INTO user_equipment (userid, os, browser, device_type, browser_language) VALUES (?, ?, ?, ?, ?)',
-                [userid, os, browser, device_type, browser_language]) as [Instert_equip, FieldPacket[]]
+            const [rows, fields]: [Insert_data, FieldPacket[]] = await mysql.execute('INSERT INTO user_equipment (userid, os, browser, device_type, browser_language) VALUES (?, ?, ?, ?, ?)',
+                [userid, os, browser, device_type, browser_language]) as [Insert_data, FieldPacket[]]
 
             if (rows.affectedRows) {
                 ctx.status = 200

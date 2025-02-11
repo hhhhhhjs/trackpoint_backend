@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import mysql from '../database/index'
 import { IToken } from "../types/token";
 import { FieldPacket } from "mysql2";
+import type { Insert_data } from "../types/insertdata";
 
 export const register = async (ctx: Context, next: Next) => {
     // 查询是否存在该用户
@@ -32,12 +33,11 @@ export const register = async (ctx: Context, next: Next) => {
         }
         // 获取当前时间
         const currentTime = new Date()
-        const result = await mysql.execute('insert into user (userid, username, password, create_at) values (?, ?, ?, ?)',
-            [uuidv4(), username, password, currentTime])
-            
-        console.log(result)
+        const [insertRows, insertFields]:[Insert_data, FieldPacket[]] = await mysql.execute('insert into user (userid, username, password, create_at) values (?, ?, ?, ?)',
+            [uuidv4(), username, password, currentTime]) as [Insert_data, FieldPacket[]];
+
         // 数据插入成功之后再向前端返回数据
-        if (result.affectedRows === 1) {
+        if (insertRows.affectedRows) {
             ctx.status = 200
             ctx.body = {
                 code: 0,
