@@ -105,3 +105,30 @@ export const handleUserDevice = async (ctx: Context, next: Next) => {
         console.error(error)
     }
 }
+
+
+// 拿到用户信息
+export const geteUserDevice = async(ctx:Context, next:Next) => {
+    const userid = ctx.query.userid as string
+    // 查询数据库
+    try {
+        const [rows, fields]: [equip[], FieldPacket[]] = await mysql.execute('select * from user_equipment where userid =?',
+            [userid]) as [equip[], FieldPacket[]]
+        if (rows.length > 0) {
+            ctx.status = 200
+            ctx.body = {
+                code: 0,
+                msg: '成功获取设备信息',
+                data: rows[0]
+            }
+            await next()
+        }
+    }catch(error){
+        ctx.status = 500
+        ctx.body = {
+            code: -1,
+            msg: '服务器错误',
+            data: null
+        } 
+    }
+}
