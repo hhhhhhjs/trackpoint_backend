@@ -9,6 +9,7 @@ interface equip {
 
 interface table_equip extends equip {
     eid?: number;
+    create_at?: Date;
 }
 
 export {
