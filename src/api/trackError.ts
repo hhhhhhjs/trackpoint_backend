@@ -13,6 +13,7 @@ interface reqMessage {
         stack?: string;
     };
     timestamp: number;
+    count?: number;
 }
 
 export const trackError = async (ctx: Context, next: Next) => {
@@ -38,6 +39,46 @@ export const trackError = async (ctx: Context, next: Next) => {
             data: null
         }
         throw error
+    } finally {
+        await next()
+    }
+}
+
+export const getError = async (ctx: Context, next: Next) => {
+    try {
+        // 分页查询
+        const { page, pageSize: limit } = ctx.query
+        // 偏移量
+        const offset = (Number(page) - 1) * Number(limit)
+
+        // 分页查询
+        const [rows, fields]: [reqMessage[], FieldPacket[]] = await mysql.query(
+            'SELECT * FROM track_error LIMIT ? OFFSET ?', // 这里 sql 不允许将 offset 写在 limit 前面
+            [Number(limit), offset]
+        ) as [reqMessage[], FieldPacket[]];
+
+        // 获取总行数
+        const [totalRows, totalRowsFields]: [reqMessage[], FieldPacket[]] = await mysql.query(
+            'SELECT COUNT(*) AS count FROM track_error') as [reqMessage[], FieldPacket[]]
+        if (rows.length && totalRows[0].count) {
+            ctx.status = 200
+            ctx.body = {
+                code: 0,
+                msg: '错误数据查询成功',
+                data: {
+                    list: rows,
+                    total: totalRows[0].count
+                }
+            }
+        }
+    } catch (error) {
+        ctx.status = 500
+        ctx.body = {
+            code: -1,
+            msg: '服务器错误',
+            data: null
+        }
+        console.log(error)
     } finally {
         await next()
     }

@@ -6,6 +6,7 @@ import { geteUserDevice } from '../api/equipmessage';
 import { trackEvent } from '../api/trackEvent';
 import { trackError } from '../api/trackError';
 import { getEvent } from '../api/trackEvent';
+import { getError } from '../api/trackError';
 
 const router = new Koarouter()
 
@@ -16,5 +17,6 @@ router.get('/api/userequipment', geteUserDevice)
 router.post('/api/trackEvent', trackEvent)
 router.get('/api/getEvent', getEvent)
 router.post('/api/trackError', trackError)
+router.get('/api/getError', getError)
 
 export default router
