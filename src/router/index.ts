@@ -12,6 +12,8 @@ import { getEvent } from '../api/trackEvent';
 import { getError } from '../api/trackError';
 import { uploadAvatar } from '../api/avatar'
 import { getAvatar } from '../api/avatar'
+import { getUserView } from '../api/echarts/UserView'
+import { reportUV } from '../api/echarts/UserView'
 
 const router = new Koarouter()
 router.post('/api/register', register)
@@ -37,5 +39,7 @@ router.post('/api/uploadAvatar', koaBody({
 }), uploadAvatar)
 
 router.get('/api/getAvatar', getAvatar)
+router.get('/api/getUserView', getUserView)
+router.post('/api/reportUserView', reportUV)
 
 export default router

@@ -6,6 +6,7 @@ import koajwt from 'koa-jwt';
 import { secret } from './middleware/createtoken';
 import serve from 'koa-static';
 import { __dirname } from './api/filepath/getFilePath';
+import { handleErrorToken } from './api/token/handleErrorToken'
 
 
 const app = new Koa();
@@ -22,9 +23,10 @@ app.use(serve(__dirname))
 // jwt 校验，并且排除 登录 和 注册接口
 
 app.use(koajwt({ secret: secret }).unless({
-    path: [/^\/api\/login/, /^\/api\/register/, /^\/api\/userequipment/, /^\/api\/getAvatar/]
+    path: [/^\/api\/login/, /^\/api\/register/, /^\/api\/userequipment/, /^\/api\/getAvatar/, /^\/api\/trackError/]
 }))
 
+app.use(handleErrorToken)
 
 app.use(koaBody())
 app.use(router.routes()).use(router.allowedMethods());

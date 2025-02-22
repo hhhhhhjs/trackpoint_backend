@@ -12,15 +12,12 @@ export const login = async(ctx: Context, next: Next) => {
     if(Array.isArray(rows) && rows.length === 0){
         ctx.status = 401
         ctx.body = {
-            code: -1,
+            code: 1001,
             msg: '用户名或密码错误',
             data: null
         }
         return
     }else {
-        // 如果登录成功，将用户信息存储到session中
-        // ctx.session.user = rows[0]
-        // ctx.session.isLogin = true
         const tokenObj = {
             userid: rows[0].userid,
             username: rows[0].username
