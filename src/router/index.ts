@@ -1,6 +1,5 @@
 import Koarouter from 'koa-router';
 import { koaBody } from 'koa-body';
-import serve from 'koa-static';
 import { __dirname } from '../api/filepath/getFilePath'
 import { register } from '../api/register';
 import { login } from '../api/login';

@@ -7,7 +7,8 @@ import { secret } from './middleware/createtoken';
 import serve from 'koa-static';
 import { __dirname } from './api/filepath/getFilePath';
 import { handleErrorToken } from './api/token/handleErrorToken'
-
+import conditional from 'koa-conditional-get'; 
+import etag from 'koa-etag'; 
 
 const app = new Koa();
 
@@ -16,6 +17,13 @@ app.use(cors({
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }))
+
+// 支持条件请求
+app.use(conditional())
+
+// 支持 etag
+app.use(etag())
+
 
 // 静态资源不需要校验 token
 app.use(serve(__dirname))
@@ -32,6 +40,6 @@ app.use(koaBody())
 app.use(router.routes()).use(router.allowedMethods());
 
 
-app.listen(3000,'127.0.0.1', () => {
+app.listen(3000, '127.0.0.1', () => {
     console.log('server is listening on port 3000')
 })
