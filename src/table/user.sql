@@ -1,0 +1,10 @@
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('15e49dd4-6c15-48ca-92a4-784f35d82857', 'cmt', '79d886010186eb60e3611cd4a5d0bcae', '2025-02-23 20:52:40', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('7b264703-144c-4f17-a551-f0a45cb089d6', '哈哈', '7fa8282ad93047a4d6fe6111c93b308a', '2025-02-25 09:27:12', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('7bf13172-8229-4363-a779-c00b1fd7d1d0', 'admin', '969125341dd90ed36af784c6116644d7', '2025-02-19 09:01:45', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('a00fc5e2-d7ad-44e6-9046-2f2cccd32a85', '带派', 'f4118c5c230bf6a7d4f045fda9e87ca8', '2025-02-22 10:18:56', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('a8e55ec6-822c-44bd-89b1-9cb3eb8dcbd9', '马一鸣', 'fcea920f7412b5da7be0cf42b8c93759', '2025-02-22 14:57:50', '2025-02-22 14:57:53');
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('c2e5624b-85b1-469f-a2ac-a615648259a6', '小李子', 'f638f4354ff089323d1a5f78fd8f63ca', '2025-02-21 14:57:54', '2025-02-22 14:57:58');
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('d8560e96-4aff-4759-aa78-14990ef36eb7', '东北雨', '8ddcff3a80f4189ca1c9d4d902c3c909', '2025-02-21 19:47:01', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('d945cde3-753f-4f12-9b78-de46c35cb9e6', '一周内', '1bbd886460827015e5d605ed44252251', '2025-02-23 14:44:56', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('f4587642-aed4-4aff-8c40-a2e37c99da8f', 'test', '7fa8282ad93047a4d6fe6111c93b308a', '2025-02-11 12:53:46', NULL);
+INSERT INTO `user` (`userid`, `username`, `password`, `create_at`, `update_at`) VALUES ('fbe40474-66b2-4392-83ba-d41bc22c4e5a', '喝醉的威士忌', 'dc0fa7df3d07904a09288bd2d2bb5f40', '2025-02-26 14:57:58', '2025-02-22 14:58:02');

@@ -1,0 +1,14 @@
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (1, 'd8560e96-4aff-4759-aa78-14990ef36eb7', '东北雨', '2025-02-23', '2025-02-23T03:08:16.892Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (2, 'f4587642-aed4-4aff-8c40-a2e37c99da8f', 'test', '2025-02-23', '2025-02-23T03:19:08.539Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (3, '7bf13172-8229-4363-a779-c00b1fd7d1d0', 'admin', '2025-02-23', '2025-02-23T03:19:34.293Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (4, 'a00fc5e2-d7ad-44e6-9046-2f2cccd32a85', '带派', '2025-02-23', '2025-02-23T03:20:06.376Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (5, 'd8560e96-4aff-4759-aa78-14990ef36eb7', '东北雨', '2025-02-21', '2025-02-21T05:08:16.892Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (6, 'd945cde3-753f-4f12-9b78-de46c35cb9e6', '一周内', '2025-02-16', '2025-02-16T12:01:10.000Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (7, '15e49dd4-6c15-48ca-92a4-784f35d82857', 'cmt', '2025-02-23', '2025-02-23T12:52:58.722Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (8, '7bf13172-8229-4363-a779-c00b1fd7d1d0', 'admin', '2025-02-24', '2025-02-24T11:02:15.905Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (9, '7bf13172-8229-4363-a779-c00b1fd7d1d0', 'admin', '2025-02-25', '2025-02-25T00:57:55.638Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (10, 'f4587642-aed4-4aff-8c40-a2e37c99da8f', 'test', '2025-02-25', '2025-02-25T00:59:34.983Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (11, 'd8560e96-4aff-4759-aa78-14990ef36eb7', '东北雨', '2025-02-25', '2025-02-25T01:00:12.574Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (12, 'a00fc5e2-d7ad-44e6-9046-2f2cccd32a85', '带派', '2025-02-25', '2025-02-25T01:24:45.200Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (13, '15e49dd4-6c15-48ca-92a4-784f35d82857', 'cmt', '2025-02-25', '2025-02-25T01:25:53.261Z');
+INSERT INTO `userview` (`Uid`, `userid`, `username`, `visit_date`, `visit_time`) VALUES (14, '7b264703-144c-4f17-a551-f0a45cb089d6', '哈哈', '2025-02-25', '2025-02-25T01:27:18.908Z');
