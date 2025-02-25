@@ -71,7 +71,8 @@ export const reportPV = async (ctx: Context, next: Next) => {
 //     }
 // }
 
-const IntegrateData = (data: PvData[]) => {
+// 数据整合
+const handleData = (data: PvData[]) => {
     const result = [] as Array<{
         page_url: string;
         access_count: number; 
@@ -109,8 +110,13 @@ export const getPageView = async (ctx: Context, next: Next) => {
             [selectStart, selectEnd]) as [PvData[], FieldPacket[]];
 
         if (rows.length) {
-            const result = IntegrateData(rows)
-            console.log(result)
+            const result = handleData(rows)
+            ctx.status = 200
+            ctx.body = {
+                code: 0,
+                msg: '查询成功',
+                data: result
+            }
         }
     } catch (error) {
         console.log(error)
