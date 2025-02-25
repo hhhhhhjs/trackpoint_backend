@@ -3,16 +3,12 @@ import { koaBody } from 'koa-body';
 import { __dirname } from '../api/filepath/getFilePath'
 import { register } from '../api/register';
 import { login } from '../api/login';
-import { handleUserDevice } from '../api/equipmessage';
-import { geteUserDevice } from '../api/equipmessage';
-import { trackEvent } from '../api/trackEvent';
-import { trackError } from '../api/trackError';
-import { getEvent } from '../api/trackEvent';
-import { getError } from '../api/trackError';
-import { uploadAvatar } from '../api/avatar'
-import { getAvatar } from '../api/avatar'
-import { getUserView } from '../api/echarts/UserView'
-import { reportUV } from '../api/echarts/UserView'
+import { handleUserDevice, geteUserDevice } from '../api/equipmessage';
+import { trackEvent, getEvent } from '../api/trackEvent';
+import { trackError, getError } from '../api/trackError';
+import { uploadAvatar, getAvatar } from '../api/avatar'
+import { getUserView, reportUV } from '../api/echarts/UserView'
+import { reportPV, getPageView } from '../api/echarts/PageView'
 
 const router = new Koarouter()
 router.post('/api/register', register)
@@ -40,5 +36,7 @@ router.post('/api/uploadAvatar', koaBody({
 router.get('/api/getAvatar', getAvatar)
 router.get('/api/getUserView', getUserView)
 router.post('/api/reportUserView', reportUV)
+router.post('/api/reportPageView', reportPV)
+router.get('/api/getPageView', getPageView)
 
 export default router
