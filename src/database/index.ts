@@ -4,7 +4,7 @@ const pool = await mysql.createPool({
     host: 'localhost',
     user: 'root',
     port: 3306,
-    password: '20011218.hj.',
+    password: process.env.databasePassword,
     database: '埋点系统',
 });
 
