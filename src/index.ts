@@ -15,7 +15,7 @@ const app = new Koa();
 app.use(cors({
     origin: 'http://localhost:5173',
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true
+    credentials: true // 允许携带 cookie
 }))
 
 // 支持条件请求
